@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de un Paciente</title>
+       
+          
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>       
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
+        <link href='../style.css' rel='stylesheet' />
+        <script src="../js/menu.js"></script>
+        <script src="../js/pacientes.js"> </script>        
+        
+</head>
+<body>
+    <div class="col-md-1 menucontainer" id="menucontainer"></div>
+    <div class="container" style="width:80% " >
+    <!-- List -->
+    <div class="card bg-light">
+        
+        <h4 class="card-title mt-3 text-center">Pacientes</h4>    
+        <div class="card-body mx-auto w-75" id="buscarDiv" >
+            <form>                
+                <div class="form-group row">                      
+                    <div class="input-group col-md-8" >
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search bigicon"></i></span></div>                            
+                        <input class="form-control>" type="text" id="nombreSearch" >                              
+                        <button type="button" class="btn btn-primary ml-3" id="crear">+ Nuevo paciente</button>
+                    </div>
+                </div>
+                <div id="errorDiv" style="width:30%; margin: auto;"></div>
+            </form>
+
+            <div class="table-responsive " style="max-height: 200px; overflow: auto">
+                <table class="table table-striped table-hover">
+                    <thead><tr><th scope="col">Id</th><th scope="col">Nombre</th><th scope="col">Editar</th></tr></thead>
+                    <tbody id="listado">
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div> 
+
+    <!-- Add modal add patient-->
+        <div class="modal fade" id="add-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" style="width: 1000px">
+                <div class="modal-content">
+                    <div class="modal-header" >
+                       
+                        <div > <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true">&times;</span> </button> </div>
+                    </div>
+                    <div class="form-check form-check-inline" id="formIzq" style="width:100%; margin: auto;">
+                    <form id="formulario">
+                    <div class="modal-body">
+                        <div id="div-login-msg">
+                            <div id="icon-login-msg" ></div>
+                            <span id="text-login-msg">Agregar Paciente</span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                          <label for="idPaciente">Cedula</label>
+                          <input type="text" class="form-control" name="idPaciente" id="idPaciente" placeholder="cedula">
+                        </div>
+                        <div class="form-group">
+                          <label for="nombrePaciente">Nombre</label>
+                          <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                          <label for="edadPaciente">Edad</label>
+                          <input type="text" class="form-control" name="edadPaciente" id="edadPaciente" placeholder="Edad">
+                        </div>
+                        <div class="form-group">
+                          <label for="celularPaciente">Numero de telefono</label>
+                          <input type="text" class="form-control" name="celularPaciente" id="celularPaciente" placeholder="Numero de telefono">
+                        </div>
+                        <div class="form-group">
+                          <label for="emailPaciente">email</label>
+                          <input type="email" class="form-control" name="emailPaciente" id="emailPaciente" placeholder="email">
+                        </div>
+                        <div class="form-group">
+                          <label for="contactoEmergenciaPaciente">Contacto de emergencia</label>
+                          <input type="text" class="form-control" name="contactoEmergenciaPaciente" id="contactoEmergenciaPaciente" placeholder="Contacto de emergencia">
+                        </div>
+                                         
+                    </div>
+                    </form>
+                    <form id="formulario" >
+                    <div class="modal-body">
+                        <div id="div-login-msg">
+                            <div id="icon-login-msg" ></div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                          <label for="enfermedades">Enfermedades</label>
+                         <div class="form-group">
+                          <label for="cirugias">Enfermedad Cardiovascular </label>
+                            <div class="form-check form-check-inline">
+                            Si <input class="form-check-input" type="radio" name="cardiovascular" id="cardiovascularSi" value=1>
+                            <div id="tdSi"></div>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            No <input class="form-check-input" type="radio" name="cardiovascular" id="cardiovascularNo" value=0>
+                            <div id="tdNo"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="cirugias">Cancer </label>
+                            <div class="form-check form-check-inline">
+                            Si <input class="form-check-input" type="radio" name="cancer" id="cancerSi" value=1>
+                            <div id="tdSi"></div>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            No <input class="form-check-input" type="radio" name="cancer" id="cancerNo" value=0>
+                            <div id="tdNo"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="cirugias">Diabetes </label>
+                            <div class="form-check form-check-inline">
+                            Si <input class="form-check-input" type="radio" name="diabetes" id="diabetesSi" value=1>
+                            <div id="tdSi"></div>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            No <input class="form-check-input" type="radio" name="diabetes" id="diabetesNo" value=0>
+                            <div id="tdNo"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="cirugias">Asma </label>
+                            <div class="form-check form-check-inline">
+                            Si <input class="form-check-input" type="radio" name="asma" id="asmaSi" value=1>
+                            <div id="tdSi"></div>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            No <input class="form-check-input" type="radio" name="asma" id="asmaNo" value=0>
+                            <div id="tdNo"></div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="cirugias">Cirugias: </label>
+                            <div class="form-check form-check-inline">
+                            Si <input class="form-check-input" type="radio" name="cirugias" id="cirugiaSi" value=1>
+                            <div id="tdSi"></div>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            No <input class="form-check-input" type="radio" name="cirugias" id="cirugiaNo" value=0>
+                            <div id="tdNo"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="alergias">Alergias: </label>
+                            <div class="form-check form-check-inline">
+                            Si <input class="form-check-input" type="radio" name="alergias" id="alergiaSi" value=1>
+                            <div id="tdSi"></div>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            No <input class="form-check-input" type="radio" name="alergias" id="alergiaNo" value=0>
+                            <div id="tdNo"></div>
+                            </div>
+                        </div>                                         
+                    </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <div>
+                            <input type="button" id="aplicar" class="btn btn-primary btn-lg btn-block" value="Aplicar">
+                        </div>
+                    </div>
+                    <div id="errorDiv" style="width:70%; margin: auto;"></div>
+                </div>
+            </div> 
+        </div>
+    <!-- Add modal add cita-->
+        <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Agendar cita</h4>
+                      </div>
+                      <div id="cuerpoDeModal" class="modal-body">
+                        <form name="save-event" method="post">
+                          <div class="form-group">
+                            <label>Motivo de la cita</label>
+                            <input type="text" name="motivo" class="form-control" />
+                          </div>
+                          <div class="form-group">
+                            <label>Hora de la cita</label>
+                            <input type="text" name="evtStart" class="form-control col-xs-3" />
+                          </div>
+                          <div class="form-group">
+                              <label>Paciente</label>
+                            <input type="text" name="paciente" id="paciente" class="form-control selectpicker">
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+</body>
+</html>

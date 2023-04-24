@@ -1,0 +1,39 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 26, 2022, 4:10:19 PM
+    author Natalia Arce 
+    author Michelle Delgado
+    author Beverly Ugalde
+*/
+.schedule-row
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+    padding-top: 0.5em;
+}
+
+.schedule-col-body
+{
+    visibility: hidden;
+}
+
+.schedule-col-body.active
+{
+    visibility: visible;
+}
+
+.menucontainer{
+    display: inline-flex;
+    padding-left: 35px;
+    width: 100%;
+    background: #47878E;
+    margin-left: 0%;
+    margin-right: 100%;
+    height: 100%;
+    position: absolute;
+}
+
